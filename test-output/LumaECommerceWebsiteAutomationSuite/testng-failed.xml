@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="3" parallel="tests" name="Failed suite [LumaECommerceWebsiteAutomationSuite]">
+  <test thread-count="3" parallel="tests" name="ChromeTests(failed)">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="E_Commerce_Magento.LumaECommerceWebsiteAutomation">
+        <methods>
+          <include name="Gear"/>
+          <include name="performanceFabric"/>
+          <include name="tearDown"/>
+          <include name="InsideWhatsNewJackets"/>
+          <include name="hoodiesStyle"/>
+          <include name="closeExtentReport"/>
+          <include name="testPass"/>
+          <include name="Women"/>
+          <include name="setupExtentReport"/>
+          <include name="hoodiesColor"/>
+          <include name="Jackets"/>
+          <include name="WhatsNew"/>
+          <include name="hoodiesPrice"/>
+          <include name="hoodiesSize"/>
+          <include name="setup"/>
+          <include name="SignIn"/>
+          <include name="testSkip"/>
+          <include name="hoodiesMaterial"/>
+          <include name="Men"/>
+          <include name="Women1"/>
+          <include name="Training"/>
+        </methods>
+      </class> <!-- E_Commerce_Magento.LumaECommerceWebsiteAutomation -->
+    </classes>
+  </test> <!-- ChromeTests(failed) -->
+  <test thread-count="3" parallel="tests" name="EdgeTests(failed)">
+    <parameter name="browser" value="edge"/>
+    <classes>
+      <class name="E_Commerce_Magento.LumaECommerceWebsiteAutomation">
+        <methods>
+          <include name="Gear"/>
+          <include name="performanceFabric"/>
+          <include name="tearDown"/>
+          <include name="InsideWhatsNewJackets"/>
+          <include name="hoodiesStyle"/>
+          <include name="closeExtentReport"/>
+          <include name="testPass"/>
+          <include name="setupExtentReport"/>
+          <include name="Women"/>
+          <include name="hoodiesColor"/>
+          <include name="Jackets"/>
+          <include name="WhatsNew"/>
+          <include name="hoodiesPrice"/>
+          <include name="hoodiesSize"/>
+          <include name="setup"/>
+          <include name="SignIn"/>
+          <include name="hoodiesMaterial"/>
+          <include name="testSkip"/>
+          <include name="Men"/>
+          <include name="Women1"/>
+          <include name="Training"/>
+        </methods>
+      </class> <!-- E_Commerce_Magento.LumaECommerceWebsiteAutomation -->
+    </classes>
+  </test> <!-- EdgeTests(failed) -->
+  <test thread-count="3" parallel="tests" name="FirefoxTests(failed)">
+    <parameter name="browser" value="firefox"/>
+    <classes>
+      <class name="E_Commerce_Magento.LumaECommerceWebsiteAutomation">
+        <methods>
+          <include name="hoodiesColor"/>
+          <include name="WhatsNew"/>
+          <include name="hoodiesPrice"/>
+          <include name="tearDown"/>
+          <include name="InsideWhatsNewJackets"/>
+          <include name="setup"/>
+          <include name="testSkip"/>
+          <include name="hoodiesMaterial"/>
+          <include name="closeExtentReport"/>
+          <include name="setupExtentReport"/>
+        </methods>
+      </class> <!-- E_Commerce_Magento.LumaECommerceWebsiteAutomation -->
+    </classes>
+  </test> <!-- FirefoxTests(failed) -->
+</suite> <!-- Failed suite [LumaECommerceWebsiteAutomationSuite] -->
