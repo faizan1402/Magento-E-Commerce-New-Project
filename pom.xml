@@ -224,7 +224,26 @@
           <version>3.13.0</version>
         </plugin>
         <plugin>
+          <groupId>io.cucumber</groupId>
+          <artifactId>cucumber-plugin</artifactId>
+          <version>7.18.0</version>
+        </plugin>
+        
+        
+        <!-- Maven Surefire Plugin Added Tag-->
+        
+        
+        <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
+          <configuration>
+                <suiteXmlFiles>
+                    <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+                </suiteXmlFiles>
+            </configuration>
+          
+          
+          
+          
           <version>3.3.0</version>
         </plugin>
         <plugin>
