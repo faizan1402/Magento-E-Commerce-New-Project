@@ -2,12 +2,18 @@ package E_Commerce_Magento;
 
 import java.awt.Desktop;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.Base64;
 import java.util.Date;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -31,11 +37,12 @@ import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
-public class MagentoEcommerce {
+public class MagentoEcommerceTest {
 
 	WebDriver driver;
 	WebDriverWait wait;
@@ -456,6 +463,101 @@ public class MagentoEcommerce {
 		driver.findElement(By.linkText("Women")).click();
 		test.pass("Clicked Women");
 
+	}
+	/*
+	 * 1 Take Screenshot as png,jpg -> Attach File to the report 2 Take Screenshot
+	 * as png,jpg -> Conver to Base64 -> Attach to the report 3 Take Screenshot as
+	 * base64 -> attach to the report (most recommended way)
+	 */
+
+	@Test
+	public void attachScreenshot() throws IOException, InterruptedException {
+
+		test = extent.createTest("Women1").assignAuthor("Faizan Ahmad").assignCategory("Smoke");
+		Thread.sleep(3000);
+		driver.findElement(By.linkText("Women")).click();
+		Thread.sleep(3000);
+		// this is the not complete screenshot capture so better to change the base64
+		// screenshot
+		// test.pass("Clicked Women
+		// Page",MediaEntityBuilder.createScreenCaptureFromPath(getBase64Screenshot()).build());
+
+		// Declare this method directly open base64 image without any image url using
+		// method createScreenCaptureFromBase64String
+		// test.pass("Clciked Women
+		// Page",MediaEntityBuilder.createScreenCaptureFromBase64String(getBase64Screenshot()).build());
+
+		// directly use the bas64 method no add extra code
+		test.pass("Clciked Women Page", MediaEntityBuilder.createScreenCaptureFromBase64String(getBase64()).build());
+
+		test.pass("Finished");
+
+	}
+
+//	public String getScreenshotPath() throws IOException {
+//	    // Capture the screenshot
+//	    File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+//
+//	    // Generate a unique file name using the current timestamp
+//	    String timestamp = String.valueOf(System.currentTimeMillis());
+//	    String path = System.getProperty("user.dir") + "\\screenshots\\image_" + timestamp + ".png";
+//
+//	    // Save the screenshot to the specified path
+//	    FileUtils.copyFile(source, new File(path));
+//
+//	    return path;
+//	}
+
+	/*
+	 * Use Cases:
+	 * 
+	 * 1. Embedding screenshots directly into reports (e.g., Extent Reports). 2.
+	 * Sending screenshots over APIs or storing them in databases. 3. Avoiding the
+	 * need to save screenshots as physical files
+	 * 
+	 */
+
+//	public String getBase64Screenshot() throws IOException {
+//		  File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+//
+//		    // Generate a unique file name using the current timestamp
+//		    String timestamp = String.valueOf(System.currentTimeMillis());
+//		    String path = System.getProperty("user.dir") + "\\screenshots\\image_" + timestamp + ".png";
+//
+//		    // Save the screenshot to the specified path
+//		    FileUtils.copyFile(source, new File(path));
+//		    byte[] imageBytes = IOUtils.toByteArray(new FileInputStream(path));
+//		    
+//			return Base64.getEncoder().encodeToString(imageBytes);
+//	}
+
+	// If Directly used base64 method
+
+//	🔗 Base64 Screenshot (getScreenshotAs(OutputType.BASE64))
+//	✅ Advantages:
+//	Embeds the image directly into the HTML report as a string.
+//
+//	No need for external file management.
+	// No need to save the screenshot as file on local storage
+//
+//	Fully self-contained report — can be shared via email or uploaded easily.
+//
+//	More secure and consistent across platforms (no broken image paths).
+
+//	
+//	✅ Which One Should You Use?
+//
+//			Scenario	Recommended Screenshot Type
+//			Sharing reports over email	✅ Base64
+//			CI/CD pipelines like Jenkins	✅ Base64
+//			Local debugging only	✅ File-based or Base64
+//			Large number of screenshots	✅ File-based (for performance)
+//			Cloud storage of screenshots	✅ File-based with CDN links
+
+//	
+	public String getBase64() {
+
+		return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
 	}
 
 	// 17
